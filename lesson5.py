@@ -71,21 +71,29 @@ def possible_move(x, y):
         return False
     return False
 
-def row():
+def row(field):
+    i = 0
+    while i < 3:
+        if field[i] == ["x","x","x"]:
+            print("Первый игрок выиграл!")
+            return True
+        i += 1
+    return False
+
+def column(field):
     pass
 
-def column():
-    pass
-
-def diagonale():
+def diagonale(field):
     pass
     
-def check_winner(field, x, y):
-    if row or column or diagonale == "x" or "o":
-        pass
+def check_winner(field):
+    if row(field) == True:
+        return True
+    return False
 
 def main():
-    while True:    
+    winner = False
+    while winner == False:    
         screen()
         while True:
             print("Ход 1 игрока:")
@@ -94,10 +102,12 @@ def main():
             os.system('clear')
             if possible_move(x, y) == True:
                 first_player(x, y)
+                winner = check_winner(field)
                 break
             else:
                 screen()
                 print("Ячейка занята или введены неверные номера!")
+
         while True:
             print("Ход 2 игрока:")
             x = int(input("Введите номер ряда: "))
@@ -105,10 +115,12 @@ def main():
             os.system('clear')
             if possible_move(x, y) == True:
                 second_player(x, y)
+                winner = check_winner(field)
                 break
             else:
                 screen()
                 print("Ячейка занята, введите другие номера!")
+
         os.system('clear')
 
 main()

@@ -38,10 +38,77 @@
 # [1, 4, 2, 3, 4, 6, 1, 7] => 4 элемента совпадают 
 # Список уникальных элементов [1, 4, 2, 3, 6, 7]
 
-import random
-numbers = [random.randint(1, 10) for _ in range(10)]
-print(f"Список случайных чисел: {numbers}")
-repeat_numbers = len(numbers) - len(set(numbers))
-collection = list(set(numbers))
-print(f"Уникальных элементов в массиве: {repeat_numbers}")
-print(f"Список уникальных элементов: {collection}")
+# import random
+# numbers = [random.randint(1, 10) for _ in range(10)]
+# print(f"Список случайных чисел: {numbers}")
+# repeat_numbers = len(numbers) - len(set(numbers))
+# collection = list(set(numbers))
+# print(f"Уникальных элементов в массиве: {repeat_numbers}")
+# print(f"Список уникальных элементов: {collection}")
+
+# Задача 4*. (Необязательная). Создайте игру в крестики-нолики.
+import os
+field = [["-","-","-"], ["-","-","-"], ["-","-","-"]]
+
+def screen():
+    i = 0
+    while i < 3:
+        print(field[i], "\n")
+        i += 1
+
+def first_player(x, y):
+    field[x][y] = "x"
+    screen()
+
+def second_player(x, y):
+    field[x][y] = "o"
+    screen()
+
+def possible_move(x, y):
+    if 0 <= x and y < 3:
+        if field[x][y] == "-":
+            return True
+        return False
+    return False
+
+def row():
+    pass
+
+def column():
+    pass
+
+def diagonale():
+    pass
+    
+def check_winner(field, x, y):
+    if row or column or diagonale == "x" or "o":
+        pass
+
+def main():
+    while True:    
+        screen()
+        while True:
+            print("Ход 1 игрока:")
+            x = int(input("Введите номер ряда: "))
+            y = int(input("Введите номер столбца: "))
+            os.system('clear')
+            if possible_move(x, y) == True:
+                first_player(x, y)
+                break
+            else:
+                screen()
+                print("Ячейка занята или введены неверные номера!")
+        while True:
+            print("Ход 2 игрока:")
+            x = int(input("Введите номер ряда: "))
+            y = int(input("Введите номер столбца: "))
+            os.system('clear')
+            if possible_move(x, y) == True:
+                second_player(x, y)
+                break
+            else:
+                screen()
+                print("Ячейка занята, введите другие номера!")
+        os.system('clear')
+
+main()

@@ -96,10 +96,16 @@ def column(field):
     return False
 
 def diagonale(field):
-    pass
+    if field[0][0] == "x" and field[1][1] == "x" and field[2][2] == "x":
+        print("Первый игрок выиграл!")
+        return True
+    if field[0][0] == "o" and field[1][1] == "o" and field[2][2] == "o":
+        print("Второй игрок выиграл!")
+        return True
+    return False
     
 def check_winner(field):
-    if row(field) == True or column(field) == True:
+    if row(field) == True or column(field) == True or diagonale(field) == True:
         return True
     return False
 
@@ -121,7 +127,6 @@ def main():
             else:
                 screen()
                 print("Ячейка занята или введены неверные номера!")
-
         if winner == True:
             break
 
@@ -139,22 +144,10 @@ def main():
             else:
                 screen()
                 print("Ячейка занята, введите другие номера!")
-
         if winner == True:
             break
 
         os.system('clear')
-
+        
 main()
-
-
-# field = [["-","o","-"], ["-","o","-"], ["-","o","-"]]
-# i = 0
-# while i < 3:
-#     if field[0][i] == "x" and field[1][i] == "x" and field[2][i] == "x":
-#         print("Первый игрок выиграл!")
-#     if field[0][i] == "o" and field[1][i] == "o" and field[2][i] == "o":
-#         print("Второй игрок выиграл!")
-#     i += 1
-    
 

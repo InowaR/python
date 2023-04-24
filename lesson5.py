@@ -223,11 +223,17 @@ print(i, j)
 i, j = next_move(i, j)
 print(i, j)
 
-for row in field:
-    print(row)
+
 path = list(reversed(path))
 for element in path:
      i, j = element
      i, j = next_move(i, j)
+     i, j = next_move(i, j)
+     i, j = next_move(i, j)
+     i, j = next_move(i, j)
+     i, j = next_move(i, j)
+     i, j = next_move(i, j)
+print(i, j)
 for row in field:
     print(row)
+

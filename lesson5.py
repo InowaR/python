@@ -169,9 +169,10 @@ field = [
 ]
 
 path = []
+path = list(reversed(path))
+
 def next_move(i, j):
     while True:
-            # path.append([i, j])
             if field[i+1][j] != 0 and field[i+1][j] != 2:
                 field[i+1][j] = 2
                 path.append([i, j])
@@ -196,44 +197,30 @@ def next_move(i, j):
                  break
     return i, j
 
+
+N = 100    #  Большое число вызовов проверки соседних клеток 
+
+
 field[1][1] = 2
 i, j = next_move(1, 1)
-print(i, j)
 
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
-i, j = next_move(i, j)
-print(i, j)
+def call_next_move(N, i, j):
+    count = 0
+    while count < N:
+        i, j = next_move(i, j)
+        count += 1
+call_next_move(N, i, j)
 
-
-path = list(reversed(path))
 for element in path:
      i, j = element
-     i, j = next_move(i, j)
-     i, j = next_move(i, j)
-     i, j = next_move(i, j)
-     i, j = next_move(i, j)
-     i, j = next_move(i, j)
-     i, j = next_move(i, j)
-print(i, j)
+     call_next_move(N, i, j)
 for row in field:
     print(row)
 
+start = field[1][1]
+end = field[1][5]
+
+if end == start:
+     print("Путь есть")
+else: 
+     print("Нет пути")

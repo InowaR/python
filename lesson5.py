@@ -65,7 +65,7 @@ def second_player(x, y):
     screen()
 
 def possible_move(x, y):
-    if 0 <= x and y < 3:
+    if 0 <= x < 3 and 0 <= y < 3:
         if field[x][y] == "-":
             return True
         return False
@@ -84,13 +84,22 @@ def row(field):
     return False
 
 def column(field):
-    pass
+    i = 0
+    while i < 3:
+        if field[0][i] == "x" and field[1][i] == "x" and field[2][i] == "x":
+            print("Первый игрок выиграл!")
+            return True
+        if field[0][i] == "o" and field[1][i] == "o" and field[2][i] == "o":
+            print("Второй игрок выиграл!")
+            return True
+        i += 1
+    return False
 
 def diagonale(field):
     pass
     
 def check_winner(field):
-    if row(field) == True:
+    if row(field) == True or column(field) == True:
         return True
     return False
 
@@ -100,8 +109,10 @@ def main():
         screen()
         while True:
             print("Ход 1 игрока:")
-            x = int(input("Введите номер ряда: "))
-            y = int(input("Введите номер столбца: "))
+            x = int(input("Введите номер ряда (1,2,3): "))
+            x-=1
+            y = int(input("Введите номер столбца (1,2,3): "))
+            y-=1
             os.system('clear')
             if possible_move(x, y) == True:
                 first_player(x, y)
@@ -116,8 +127,10 @@ def main():
 
         while True:
             print("Ход 2 игрока:")
-            x = int(input("Введите номер ряда: "))
-            y = int(input("Введите номер столбца: "))
+            x = int(input("Введите номер ряда (1,2,3): "))
+            x-=1
+            y = int(input("Введите номер столбца (1,2,3): "))
+            y-=1
             os.system('clear')
             if possible_move(x, y) == True:
                 second_player(x, y)
@@ -133,3 +146,15 @@ def main():
         os.system('clear')
 
 main()
+
+
+# field = [["-","o","-"], ["-","o","-"], ["-","o","-"]]
+# i = 0
+# while i < 3:
+#     if field[0][i] == "x" and field[1][i] == "x" and field[2][i] == "x":
+#         print("Первый игрок выиграл!")
+#     if field[0][i] == "o" and field[1][i] == "o" and field[2][i] == "o":
+#         print("Второй игрок выиграл!")
+#     i += 1
+    
+

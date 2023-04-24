@@ -77,6 +77,9 @@ def row(field):
         if field[i] == ["x","x","x"]:
             print("Первый игрок выиграл!")
             return True
+        if field[i] == ["o","o","o"]:
+            print("Второй игрок выиграл!")
+            return True
         i += 1
     return False
 
@@ -108,6 +111,9 @@ def main():
                 screen()
                 print("Ячейка занята или введены неверные номера!")
 
+        if winner == True:
+            break
+
         while True:
             print("Ход 2 игрока:")
             x = int(input("Введите номер ряда: "))
@@ -120,6 +126,9 @@ def main():
             else:
                 screen()
                 print("Ячейка занята, введите другие номера!")
+
+        if winner == True:
+            break
 
         os.system('clear')
 

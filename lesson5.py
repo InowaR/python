@@ -171,20 +171,25 @@ field = [
 path = []
 def next_move(i, j):
     while True:
+            # path.append([i, j])
             if field[i+1][j] != 0 and field[i+1][j] != 2:
                 field[i+1][j] = 2
+                path.append([i, j])
                 i+=1
                 break
             if field[i][j+1] != 0 and field[i][j+1] != 2:
                 field[i][j+1] = 2
+                path.append([i, j])
                 j+=1
                 break
             if field[i-1][j] != 0 and field[i-1][j] != 2:
                 field[i-1][j] = 2
+                path.append([i, j])
                 i-=1
                 break
             if field[i][j-1] != 0 and field[i][j-1] != 2:
                 field[i][j-1] = 2
+                path.append([i, j])
                 j-=1
                 break
             else: 
@@ -218,5 +223,11 @@ print(i, j)
 i, j = next_move(i, j)
 print(i, j)
 
+for row in field:
+    print(row)
+path = list(reversed(path))
+for element in path:
+     i, j = element
+     i, j = next_move(i, j)
 for row in field:
     print(row)

@@ -47,107 +47,176 @@
 # print(f"Список уникальных элементов: {collection}")
 
 # Задача 4*. (Необязательная). Создайте игру в крестики-нолики.
-import os
-field = [["-","-","-"], ["-","-","-"], ["-","-","-"]]
+# import os
+# field = [["-","-","-"], ["-","-","-"], ["-","-","-"]]
 
-def screen():
-    i = 0
-    while i < 3:
-        print(field[i], "\n")
-        i += 1
+# def screen():
+#     i = 0
+#     while i < 3:
+#         print(field[i], "\n")
+#         i += 1
 
-def first_player(x, y):
-    field[x][y] = "x"
-    screen()
+# def first_player(x, y):
+#     field[x][y] = "x"
+#     screen()
 
-def second_player(x, y):
-    field[x][y] = "o"
-    screen()
+# def second_player(x, y):
+#     field[x][y] = "o"
+#     screen()
 
-def possible_move(x, y):
-    if 0 <= x < 3 and 0 <= y < 3:
-        if field[x][y] == "-":
-            return True
-        return False
-    return False
+# def possible_move(x, y):
+#     if 0 <= x < 3 and 0 <= y < 3:
+#         if field[x][y] == "-":
+#             return True
+#         return False
+#     return False
 
-def row(field):
-    i = 0
-    while i < 3:
-        if field[i] == ["x","x","x"]:
-            print("Первый игрок выиграл!")
-            return True
-        if field[i] == ["o","o","o"]:
-            print("Второй игрок выиграл!")
-            return True
-        i += 1
-    return False
+# def row(field):
+#     i = 0
+#     while i < 3:
+#         if field[i] == ["x","x","x"]:
+#             print("Первый игрок выиграл!")
+#             return True
+#         if field[i] == ["o","o","o"]:
+#             print("Второй игрок выиграл!")
+#             return True
+#         i += 1
+#     return False
 
-def column(field):
-    i = 0
-    while i < 3:
-        if field[0][i] == "x" and field[1][i] == "x" and field[2][i] == "x":
-            print("Первый игрок выиграл!")
-            return True
-        if field[0][i] == "o" and field[1][i] == "o" and field[2][i] == "o":
-            print("Второй игрок выиграл!")
-            return True
-        i += 1
-    return False
+# def column(field):
+#     i = 0
+#     while i < 3:
+#         if field[0][i] == "x" and field[1][i] == "x" and field[2][i] == "x":
+#             print("Первый игрок выиграл!")
+#             return True
+#         if field[0][i] == "o" and field[1][i] == "o" and field[2][i] == "o":
+#             print("Второй игрок выиграл!")
+#             return True
+#         i += 1
+#     return False
 
-def diagonale(field):
-    if field[0][0] == "x" and field[1][1] == "x" and field[2][2] == "x":
-        print("Первый игрок выиграл!")
-        return True
-    if field[0][0] == "o" and field[1][1] == "o" and field[2][2] == "o":
-        print("Второй игрок выиграл!")
-        return True
-    return False
+# def diagonale(field):
+#     if field[0][0] == "x" and field[1][1] == "x" and field[2][2] == "x":
+#         print("Первый игрок выиграл!")
+#         return True
+#     if field[0][0] == "o" and field[1][1] == "o" and field[2][2] == "o":
+#         print("Второй игрок выиграл!")
+#         return True
+#     return False
     
-def check_winner(field):
-    if row(field) == True or column(field) == True or diagonale(field) == True:
-        return True
-    return False
+# def check_winner(field):
+#     if row(field) == True or column(field) == True or diagonale(field) == True:
+#         return True
+#     return False
 
-def main():
-    winner = False
-    while winner == False:    
-        screen()
-        while True:
-            print("Ход 1 игрока:")
-            x = int(input("Введите номер ряда (1,2,3): "))
-            x-=1
-            y = int(input("Введите номер столбца (1,2,3): "))
-            y-=1
-            os.system('clear')
-            if possible_move(x, y) == True:
-                first_player(x, y)
-                winner = check_winner(field)
+# def main():
+#     winner = False
+#     while winner == False:    
+#         screen()
+#         while True:
+#             print("Ход 1 игрока:")
+#             x = int(input("Введите номер ряда (1,2,3): "))
+#             x-=1
+#             y = int(input("Введите номер столбца (1,2,3): "))
+#             y-=1
+#             os.system('clear')
+#             if possible_move(x, y) == True:
+#                 first_player(x, y)
+#                 winner = check_winner(field)
+#                 break
+#             else:
+#                 screen()
+#                 print("Ячейка занята или введены неверные номера!")
+#         if winner == True:
+#             break
+
+#         while True:
+#             print("Ход 2 игрока:")
+#             x = int(input("Введите номер ряда (1,2,3): "))
+#             x-=1
+#             y = int(input("Введите номер столбца (1,2,3): "))
+#             y-=1
+#             os.system('clear')
+#             if possible_move(x, y) == True:
+#                 second_player(x, y)
+#                 winner = check_winner(field)
+#                 break
+#             else:
+#                 screen()
+#                 print("Ячейка занята, введите другие номера!")
+#         if winner == True:
+#             break
+
+#         os.system('clear')
+# main()
+
+# Задача 5*. (Необязательная). Двумерный массив размером 5х5 заполнен случайными нулями и единицами. 
+# Игрок может ходить только по полям, заполненным единицами. 
+# Проверьте, существует ли путь из точки [0, 0] в точку [4, 4]
+# (эти поля требуется принудительно задать равными единице).
+
+field = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0, 1, 1, 1, 1, 0],
+    [0, 1, 0, 1, 0, 1, 1, 1, 1, 0],
+    [0, 1, 0, 1, 0, 0, 0, 0, 1, 0],
+    [0, 1, 0, 1, 1, 1, 1, 0, 1, 0],
+    [0, 1, 0, 1, 1, 1, 1, 0, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+]
+
+path = []
+def next_move(i, j):
+    while True:
+            if field[i+1][j] != 0 and field[i+1][j] != 2:
+                field[i+1][j] = 2
+                i+=1
                 break
-            else:
-                screen()
-                print("Ячейка занята или введены неверные номера!")
-        if winner == True:
-            break
-
-        while True:
-            print("Ход 2 игрока:")
-            x = int(input("Введите номер ряда (1,2,3): "))
-            x-=1
-            y = int(input("Введите номер столбца (1,2,3): "))
-            y-=1
-            os.system('clear')
-            if possible_move(x, y) == True:
-                second_player(x, y)
-                winner = check_winner(field)
+            if field[i][j+1] != 0 and field[i][j+1] != 2:
+                field[i][j+1] = 2
+                j+=1
                 break
-            else:
-                screen()
-                print("Ячейка занята, введите другие номера!")
-        if winner == True:
-            break
+            if field[i-1][j] != 0 and field[i-1][j] != 2:
+                field[i-1][j] = 2
+                i-=1
+                break
+            if field[i][j-1] != 0 and field[i][j-1] != 2:
+                field[i][j-1] = 2
+                j-=1
+                break
+            else: 
+                 break
+    return i, j
 
-        os.system('clear')
-        
-main()
+field[1][1] = 2
+i, j = next_move(1, 1)
+print(i, j)
 
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+i, j = next_move(i, j)
+print(i, j)
+
+for row in field:
+    print(row)

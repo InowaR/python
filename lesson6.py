@@ -2,9 +2,9 @@
 # N может быть любой длины.
 # N = 132: 132 + 132132 + 132132132 = 132264396
 
-# N = input("Введите натуральное число: ")
-# new_string = int(N) + int(2 * N) + int(3 * N)
-# print(new_string)
+N = input("Введите натуральное число: ")
+new_string = int(N) + int(2 * N) + int(3 * N)
+print(new_string)
 
 # Задача 2. Задан массив из случайных цифр на 15 элементов. 
 # На вход подаётся трёхзначное натуральное число. 
@@ -54,7 +54,6 @@ def check_sequence(start_point, length):
         check_array.append(random_numbers[i])
     bool_array.append(check_array == N)
 
-
 for start_point in start_index:
     check_sequence(start_point, length)
 
@@ -64,3 +63,18 @@ def result():
     else:
         print("Последовательности нет")
 result()
+
+
+# Задача 3. Найдите все простые несократимые дроби, 
+# лежащие между 0 и 1, знаменатель которых не превышает 11.
+
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+for i in range(2, 12):
+    for j in range(1, i):
+        if gcd(i, j) == 1:
+            print(f"{j} / {i}")

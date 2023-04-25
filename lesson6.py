@@ -13,13 +13,16 @@
 # [0, 5, 6, 2, 7, 7, 8, 1, 1, 9] - 277 -> да
 # [4, 4, 3, 6, 7, 0, 8, 5, 1, 2] - 812 -> нет
 
-# import random
-# random_numbers = [random.randint(1,10) for _ in range(15)]
-# print(random_numbers)
+import random
+random_numbers = [random.randint(1,10) for _ in range(15)]
+print(random_numbers)
 
-random_numbers = [0, 5, 6, 2, 7, 5, 4, 2, 7, 5, 1, 1, 9]
+number = input("Введите трехзначное натуральное число: ")
 
-N = [5,4,2]
+N = []
+for i in number:
+    N.append(int(i))
+print(N)
 
 start_index = []
 
@@ -30,7 +33,6 @@ while i < len(random_numbers):
     i += 1
 
 length = len(start_index)
-print(start_index)
 
 bool_array = []
 
@@ -54,4 +56,9 @@ def check_sequence(start_point, length):
 for start_point in start_index:
     check_sequence(start_point, length)
 
-print(bool_array)
+def result():
+    if True in bool_array:
+        print("Последовательность из 3 элементов есть в массиве")
+    else:
+        print("Последовательности нет")
+result()

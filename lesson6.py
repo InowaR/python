@@ -14,9 +14,8 @@
 # [4, 4, 3, 6, 7, 0, 8, 5, 1, 2] - 812 -> нет
 
 import random
-random_numbers = [random.randint(1,10) for _ in range(15)]
+random_numbers = [random.randint(0, 9) for _ in range(15)]
 print(random_numbers)
-
 number = input("Введите трехзначное натуральное число: ")
 
 N = []
@@ -40,11 +39,14 @@ def check_sequence(start_point, length):
     array = []
     i = 0
     while i < len(N):
-        j = start_point
-        while j <= start_point + length:
-            if N[i] == random_numbers[j]:
-                array.append(j)
-            j += 1
+        try:
+            j = start_point
+            while j <= start_point + length:
+                if N[i] == random_numbers[j]:
+                    array.append(j)
+                j += 1
+        except:
+            break
         i += 1
     array = sorted(set(array))
     check_array = []

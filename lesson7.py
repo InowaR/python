@@ -16,16 +16,34 @@
 
 # Задача 2. Создайте декоратор, повторяющий функцию заданное количество раз.
 
-def repeat_func(times):
-    def procedure(func):
-        def wrapper():
-            for _ in range(times):
-                func()
-        return wrapper
-    return procedure
+# def repeat_func(times):
+#     def procedure(func):
+#         def wrapper():
+#             for _ in range(times):
+#                 func()
+#         return wrapper
+#     return procedure
 
-@repeat_func(times=6)
-def func():
-    print("Hello")
+# @repeat_func(times=6)
+# def func():
+#     print("Hello")
 
-func()
+# func()
+
+
+# Задача 3. Добавьте в telegram-бота игру «Угадай числа».
+# Бот загадывает число от 1 до 1000. 
+# Когда игрок угадывает его, бот выводит количество сделанных ходов.
+
+import telebot;
+bot = telebot.TeleBot('key')
+
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+	bot.reply_to(message, "Howdy, how are you doing?")
+
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+	bot.reply_to(message, message.text)
+
+bot.infinity_polling()

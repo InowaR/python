@@ -35,15 +35,40 @@
 # Бот загадывает число от 1 до 1000. 
 # Когда игрок угадывает его, бот выводит количество сделанных ходов.
 
-import telebot;
+
+import telebot
+import random
+
 bot = telebot.TeleBot('key')
 
-@bot.message_handler(commands=['start'])
-def send_welcome(message):
-	bot.reply_to(message, "Howdy, how are you doing?")
+@bot.message_handler(commands=['play'])
+def play(message):
+    bot.send_message(message.chat.id, 'Игра началась! Я загадал число от 1 до 1000. Введи свой вариант:')
 
-@bot.message_handler(func=lambda message: True)
-def echo_all(message):
-	bot.reply_to(message, message.text)
+    number = random.randint(1, 3)
+    tries = 0
 
-bot.infinity_polling()
+    @bot.message_handler(func=lambda m: True)
+    def guess(message):
+        nonlocal tries
+        try:
+            guess_number = int(message.text)
+        except ValueError:
+            bot.send_message(message.chat.id, 'Некорректный ввод. Попробуй еще раз.')
+            return
+
+        tries += 1
+
+        if guess_number > number:
+            bot.send_message(message.chat.id, 'Мое число меньше. Попробуй еще раз.')
+        elif guess_number < number:
+            bot.send_message(message.chat.id, 'Мое число больше. Попробуй еще раз.')
+        else:
+            bot.send_message(message.chat.id, f'Поздравляю! Ты угадал число за {tries} попыток. Чтобы сыграть еще раз, введите команду /play.')
+            tries = 0
+
+@bot.message_handler(commands=['play'])
+def new_game(message):
+    play(message)
+
+bot.polling()

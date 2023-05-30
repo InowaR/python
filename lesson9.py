@@ -27,7 +27,13 @@ x = np.random.randint(1, 10)
 y = np.random.randint(1, 10)
 array = np.random.randint(10, size=(x, y))
 
+
+maxvalue = np.max(array)
+y1, x1 = np.where(array==maxvalue)
+minvalue = np.min(array)
+y2, x2 = np.where(array==minvalue)
+
 print(array)
-print(f'Максимальный элемент массива имеет индекс: [{np.argmax(array, axis=0)[0]}, {np.argmax(array, axis=1)[0]}]')
-print(f'Минимальный элемент массива имеет индекс: [{np.argmin(array, axis=0)[0]}, {np.argmin(array, axis=1)[0]}]')
+print(f'Максимальный элемент массива имеет индекс: [{x1[0]}, {y1[0]}]')
+print(f'Минимальный элемент массива имеет индекс: [{x2[0]}, {y2[0]}]')
 print(f'Элементы главной диагонали массива: {array.diagonal()}')
